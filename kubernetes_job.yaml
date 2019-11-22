@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hey-job-$NUM
+spec:
+  template:
+    spec:
+      containers:
+      - name: hey-job-$NUM
+        image: $IMAGE
+        command: 
+          ["/tmp/hey","-c","2000","-z","10m","$URL"]
+      restartPolicy: Never
